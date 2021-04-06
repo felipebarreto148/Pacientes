@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import actions from '../../../store/actions';
 
 export default {
   name: 'ButtonRemove',
@@ -18,8 +18,8 @@ export default {
     },
     async removePacientes(param) {
       const id = Number(param) - 1;
-      console.log(id);
-      await axios.delete(`http://localhost:3000/pacientes/${id}`);
+      await actions.deletePacientes(id);
+      await actions.getPacientes();
     },
   },
 };

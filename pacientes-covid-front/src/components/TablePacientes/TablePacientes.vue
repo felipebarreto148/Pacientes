@@ -10,7 +10,7 @@
     </thead>
     <tbody>
       <RowsPacientes
-        v-for="(paciente, index) in pacientes"
+        v-for="(paciente, index) in pacientesList"
         :key="index"
         :id="parseInt(paciente.id) + 1"
         :nome="paciente.nome"
@@ -22,7 +22,9 @@
 </template>
 
 <script>
-import axios from 'axios';
+import actions from '../../store/actions';
+import state from '../../store/state';
+import getters from '../../store/getters';
 import RowsPacientes from './RowsPacientes/RowsPacientes.vue';
 
 export default {
@@ -32,24 +34,22 @@ export default {
   },
   data() {
     return {
-      pacientes: [],
+      pacientes: state.pacientes,
     };
   },
   methods: {
     async getPacientes() {
-      await axios.get('http://localhost:3000/pacientes')
-        .then((res) => {
-          // console.log(res?.data?.pacientes);
-          this.pacientes = res?.data?.pacientes;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      await actions.getPacientes();
     },
   },
-  created() {
-    this.getPacientes();
+  computed: {
+    pacientesList() {
+      return getters.pacientesInfo;
+    }
   },
+  created(){
+    this.getPacientes();
+  }
 };
 </script>
 
