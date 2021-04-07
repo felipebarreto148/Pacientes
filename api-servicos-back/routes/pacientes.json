@@ -25,14 +25,20 @@
 	},
 	{
 		"id": "4",
-		"nome": "Carlos",
-		"idade": "28",
-		"resultado": "Negativo"
+		"nome": "teste",
+		"idade": "15",
+		"resultado": "Positivo"
 	},
 	{
 		"id": "5",
-		"nome": "teste",
-		"idade": "100",
+		"nome": "testee",
+		"idade": "49",
+		"resultado": "Negativo"
+	},
+	{
+		"id": "6",
+		"nome": "testeee",
+		"idade": "58",
 		"resultado": "Positivo"
 	}
 ]

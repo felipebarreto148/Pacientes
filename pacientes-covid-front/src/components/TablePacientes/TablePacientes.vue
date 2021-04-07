@@ -2,10 +2,10 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th class="items" scope="col">#</th>
-        <th class="items" scope="col">Nome</th>
-        <th class="items" scope="col">Idade</th>
-        <th class="items" scope="col">Resultado</th>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Idade</th>
+        <th scope="col">Resultado</th>
       </tr>
     </thead>
     <tbody>
@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import actions from '../../store/actions';
-import state from '../../store/state';
-import getters from '../../store/getters';
+import actions from '@/store/actions';
+import state from '@/store/state';
+import getters from '@/store/getters';
 import RowsPacientes from './RowsPacientes/RowsPacientes.vue';
 
 export default {
@@ -55,4 +55,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+
 </style>

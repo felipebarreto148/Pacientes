@@ -4,10 +4,10 @@
     <input type="text" id="idPaciente" readonly />
 
     <label for="idNome">Nome:</label>
-    <input type="text" id="nomePaciente" readonly />
+    <input type="text" id="nomePaciente" />
 
     <label for="idadePaciente">Idade:</label>
-    <input type="text" id="idadePaciente" readonly />
+    <input type="text" id="idadePaciente" />
 
     <label for="resultadoPaciente">Resultado:</label>
     <select id="resultadoPaciente">
@@ -15,6 +15,8 @@
       <option value="Positivo">Positivo</option>
       <option value="Negativo">Negativo</option>
     </select>
+
+    <button class="btn btn-success">Adicionar</button>
   </form>
 </template>
 

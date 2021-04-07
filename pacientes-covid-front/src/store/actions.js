@@ -11,9 +11,16 @@ export default {
       console.error(err);
     }
   },
+  async addPaciente(data) {
+    try{
+      console.log(data);
+    } catch(err) {
+      console.error(err);
+    }
+  },
   async deletePacientes(id) {
     try{
-      Pacientes.deletePacientes(id);
+      await Pacientes.deletePacientes(id);
     } catch(err){
       console.error(err);
     }
