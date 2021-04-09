@@ -1,19 +1,19 @@
 <template>
   <section id="main">
     <h1>Alterar Paciente</h1>
-    <form id="formAddPaciente">
+    <form id="formAddPaciente" autocomplete="off">
       <div class="form-group row">
         <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-form-label" for="idPaciente"
           >Id:</label
         >
         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
           <select
-            id="resultadoPaciente"
+            id="idPaciente"
             class="form-control-sm form-control form-control-lg"
-            v-model="id"
           >
-            <option v-for="(paciente, index) in pacientes" :key="index">
-              {{ paciente.nome }}
+            <option v-for="(paciente, index) in pacientes" :key="index"
+            :value="paciente.id">
+              {{ index + 1 }}: {{ paciente.nome }}
             </option>
           </select>
         </div>
@@ -26,7 +26,6 @@
             class="form-control-sm form-control form-control-lg"
             type="text"
             id="nomePaciente"
-            v-model="nome"
           />
         </div>
       </div>
@@ -40,7 +39,6 @@
             class="form-control-sm form-control form-control-lg"
             type="text"
             id="idadePaciente"
-            v-model="idade"
           />
         </div>
       </div>
@@ -53,7 +51,6 @@
           <select
             id="resultadoPaciente"
             class="form-control-sm form-control form-control-lg"
-            v-model="resultado"
           >
             <option value="::Selecionar::">::Selecionar::</option>
             <option value="Positivo">Positivo</option>
@@ -61,13 +58,15 @@
           </select>
         </div>
       </div>
-      <button class="btn btn-success" @click="addPaciente($event)">Adicionar</button>
+      <button class="btn btn-success" @click="putPaciente($event)">Adicionar</button>
     </form>
   </section>
 </template>
 
 <script>
 import state from '@/store/state.js';
+import actions from '@/store/actions';
+
 
 export default {
   name: "FormPutPaciente",
@@ -75,7 +74,27 @@ export default {
     return{
       pacientes: state.pacientes,
     };
-  }
+  },
+  methods: {
+    putPaciente(event){
+      event.preventDefault();
+      const newPaciente = {
+        id: document.getElementById('idPaciente').value, 
+        nome: document.getElementById('nomePaciente').value,
+        idade: document.getElementById('idadePaciente').value,
+        resultado: document.getElementById('resultadoPaciente').value,
+      }
+
+      actions.putPaciente(newPaciente.id, newPaciente);
+      this.clearForm()
+    },
+    clearForm() {
+      document.getElementById('idPaciente').value = '';
+      document.getElementById('nomePaciente').value = '';
+      document.getElementById('idadePaciente').value = '';
+      document.getElementById('resultadoPaciente').value = '::Selecionar::';
+    },
+  },
 };
 </script>
 

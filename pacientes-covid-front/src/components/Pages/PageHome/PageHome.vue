@@ -6,7 +6,7 @@
           Pacientes
         </h1>
         <div class="buttons">
-          <button @click="isAdd = false; isPut = false" class="btn btn-info">Home</button>
+          <button @click="isAdd = false; isPut = false" class="btn btn-info">Consultar</button>
           <button @click="isAdd = true; isPut = false" class="btn btn-info">Adicionar</button>
           <button @click="isPut = true; isAdd = false" class="btn btn-info">Alterar</button>
         </div>

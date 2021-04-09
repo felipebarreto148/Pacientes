@@ -1,9 +1,11 @@
 <template>
   <section id="main" class="container">
     <h1>Adionar paciente</h1>
-    <form id="formAddPaciente">
+    <form id="formAddPaciente" autocomplete="off">
       <div class="form-group row">
-        <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-form-label" for="idPaciente">Id:</label>
+        <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-form-label" for="idPaciente"
+          >Id:</label
+        >
         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
           <input
             class="form-control-sm form-control form-control-lg"
@@ -28,7 +30,9 @@
       </div>
 
       <div class="form-group row">
-        <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-form-label" for="idadePaciente">Idade:</label>
+        <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-form-label" for="idadePaciente"
+          >Idade:</label
+        >
         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
           <input
             class="form-control-sm form-control form-control-lg"
@@ -40,7 +44,9 @@
       </div>
 
       <div class="form-group row">
-        <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-form-label" for="resultadoPaciente">Resultado:</label>
+        <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-form-label" for="resultadoPaciente"
+          >Resultado:</label
+        >
         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
           <select
             id="resultadoPaciente"
@@ -59,36 +65,36 @@
 </template>
 
 <script>
-import actions from "@/store/actions.js";
+import actions from '@/store/actions';
 
 export default {
-  name: "FormAddPaciente",
+  name: 'FormAddPaciente',
   data() {
     return {
       id: actions.setIdPaciente() + 1,
-      nome: "",
-      idade: "",
-      resultado: ""
+      nome: '',
+      idade: '',
+      resultado: '',
     };
   },
   methods: {
     addPaciente(event) {
       event.preventDefault();
-      let data = {
+      const data = {
         id: `${actions.setIdPaciente()}`,
         nome: this.nome,
         idade: this.idade,
-        resultado: this.resultado
+        resultado: this.resultado,
       };
 
       actions.addPaciente(data);
       this.id += 1;
-      this.nome = "";
-      this.idade = "";
-      this.resultado = "";
+      this.nome = '';
+      this.idade = '';
+      this.resultado = '';
       actions.getPacientes();
-    }
-  }
+    },
+  },
 };
 </script>
 
