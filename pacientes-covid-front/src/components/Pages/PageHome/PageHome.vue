@@ -6,26 +6,35 @@
           Pacientes
         </h1>
         <div class="buttons">
-          <button class="btn btn-info">Home</button>
-          <button class="btn btn-info">Adicionar</button>
-          <button class="btn btn-info">Alterar</button>
+          <button @click="isAdd = false; isPut = false" class="btn btn-info">Home</button>
+          <button @click="isAdd = true; isPut = false" class="btn btn-info">Adicionar</button>
+          <button @click="isPut = true; isAdd = false" class="btn btn-info">Alterar</button>
         </div>
       </div>
     </div>
-    <TablePacientes />
-    <!-- <FormAddPaciente /> -->
+    <TablePacientes v-if="!isAdd && !isPut" />
+    <FormAddPaciente v-if="isAdd" />
+    <FormPutPaciente v-if="isPut" />
   </div>
 </template>
 
 <script>
 import TablePacientes from "@/components/TablePacientes/TablePacientes.vue";
 import FormAddPaciente from "@/components/FormsPacientes/FormAddPaciente.vue";
+import FormPutPaciente from "@/components/FormsPacientes/FormPutPaciente.vue";
 
 export default {
   name: "PageHome",
   components: {
     TablePacientes,
-    FormAddPaciente
+    FormAddPaciente,
+    FormPutPaciente
+  },
+  data() {
+    return {
+      isAdd: false,
+      isPut: false,
+    }
   }
 };
 </script>

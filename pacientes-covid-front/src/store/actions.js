@@ -1,4 +1,5 @@
-import Pacientes from '../services/pacientes';
+import Pacientes from '@/services/pacientes';
+
 
 import state from './state';
 
@@ -13,7 +14,7 @@ export default {
   },
   async addPaciente(data) {
     try{
-      console.log(data);
+      Pacientes.addPaciente(data);
     } catch(err) {
       console.error(err);
     }
@@ -25,4 +26,7 @@ export default {
       console.error(err);
     }
   },
+  setIdPaciente(){
+    return state.pacientes.length;
+  }
 }
